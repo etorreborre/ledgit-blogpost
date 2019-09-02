@@ -1,0 +1,155 @@
+cabal-version:       2.0
+name:                ledgit
+version:             1.0.0
+synopsis:            import csv ledger files
+description:         import csv ledger files
+homepage:            https://github.com/etorreborre/ledgit
+bug-reports:         https://github.com/etorreborre/ledgit/issues
+license:             MIT
+license-file:        LICENSE
+author:              Eric Torreborre
+maintainer:          etorreborre@yahoo.com
+copyright:           2019 Eric Torreborre
+category:            Utility
+build-type:          Simple
+extra-doc-files:     README.md
+                   , CHANGELOG.md
+tested-with:         GHC == 8.6.4
+
+source-repository head
+  type:                git
+  location:            https://github.com/etorreborre/ledgit.git
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Ledgit
+                     , Ledgit.App
+                     , Ledgit.Data
+                     , Ledgit.Importer
+                     , Ledgit.Exporter
+
+  build-depends:       base
+                     , cassava
+                     , exceptions
+                     , mmorph
+                     , optparse-applicative
+                     , protolude
+                     , registry
+                     , streaming
+                     , streaming-bytestring
+                     , streaming-cassava
+                     , streaming-with
+                     , text
+                     , time
+                     , word8
+
+  ghc-options:         -Wall
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wpartial-fields
+
+  default-language:    Haskell2010
+  default-extensions:  BlockArguments
+                       ConstraintKinds
+                       DeriveGeneric
+                       FlexibleContexts
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       NoImplicitPrelude
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
+
+executable ledgit
+  hs-source-dirs:      app
+  main-is:             Main.hs
+
+  build-depends:       base
+                     , ledgit
+                     , protolude
+                     , registry
+                     , time
+
+  ghc-options:         -Wall
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wpartial-fields
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       NoImplicitPrelude
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns
+
+test-suite ledgit-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             test.hs
+
+  other-modules:       AutoDiscoveredSpecs
+                       Test.Ledgit.DataSpec
+
+  build-depends:       base
+                     , ledgit
+                     , protolude
+                     , registry-hedgehog
+                     , time
+                     , text
+                     , cassava
+                     , tasty
+
+  ghc-options:         -Wall
+                       -threaded
+                       -rtsopts
+                       -with-rtsopts=-N
+                       -Wincomplete-record-updates
+                       -Wcompat
+                       -Widentities
+                       -Wredundant-constraints
+                       -fhide-source-paths
+                       -Wpartial-fields
+                       -fno-warn-missing-signatures
+                       -fno-warn-incomplete-uni-patterns
+
+  default-language:    Haskell2010
+  default-extensions:  ConstraintKinds
+                       DeriveGeneric
+                       GeneralizedNewtypeDeriving
+                       InstanceSigs
+                       KindSignatures
+                       LambdaCase
+                       NoImplicitPrelude
+                       OverloadedStrings
+                       RecordWildCards
+                       ScopedTypeVariables
+                       StandaloneDeriving
+                       TupleSections
+                       TypeApplications
+                       ViewPatterns

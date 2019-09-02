@@ -1,0 +1,17 @@
+resolver: lts-13.16
+
+extra-deps:
+  - registry-0.1.7.0
+  - hedgehog-1.0
+  - tasty-hedgehog-1.0.0.1
+  - streaming-bytestring-0.1.6
+  - streaming-cassava-0.1.0.1
+  - streaming-with-0.2.2.1
+
+  - git: https://github.com/etorreborre/registry-hedgehog.git
+    commit: 60ef738f773325067b76b301e28b58ac1f8e8f04
+
+allow-newer: true
+
+ghc-options:
+  "$locals": -fhide-source-paths
